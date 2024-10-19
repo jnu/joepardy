@@ -67,6 +67,24 @@ export const getRandomQuestion = async (f: Fetcher) => {
     return data as Trivium;
 }
 
+export const getQuestion = async (f: Fetcher, id: string) => {
+    const response = await _fetch(f, 'GET', `questions/${id}`);
+    if (!response.ok) {
+        throw new Error('Failed to fetch question');
+    }
+    const data = await response.json();
+    return data as Trivium;
+}
+
+export const getRandomId = async (f: Fetcher) => {
+    const response = await _fetch(f, 'GET', 'questions/random/id');
+    if (!response.ok) {
+        throw new Error('Failed to fetch question id');
+    }
+    const data = await response.json();
+    return data as number
+}
+
 export interface Explanation {
     trivium: Trivium;
     summary: {

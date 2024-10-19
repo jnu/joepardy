@@ -13,7 +13,7 @@
 
   async function next() {
     revealed = false;
-    await invalidateAll();
+    await goto(`/`);
   }
 
   async function explain() {
