@@ -13,11 +13,11 @@
 
 </script>
 
-<div class="flex p-12 flex-col space-y-2 h-screen">
-    <div class="text-m text-slate-600 dark:text-slate-400 text-center">{clean(explanation.trivium.category)} - ${explanation.trivium.score}</div>
-    <div class="text-sm text-slate-400 dark:text-slate-600 self-center">{clean(explanation.trivium.answer)}: <span class="font-bold">{clean(explanation.trivium.question)}</span></div>
-  <div class="text-m text-slate-900 dark:text-slate-100 text-left overflow-y-auto"><span class="font-bold">Summary:</span>{explanation.summary.content}</div>
-    <div class="!mt-auto self-center">
-        <button on:click={next} class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded text-2xl">next</button>
+<div class="flex flex-col space-y-2 h-screen">
+    <div class="text-m text-slate-600 text-center w-full py-2 dark:bg-blue-500">{clean(explanation.trivium.category)} - ${explanation.trivium.score}</div>
+    <div class="text-sm text-slate-900 self-center px-2">{clean(explanation.trivium.answer)}: <span class="font-bold">{clean(explanation.trivium.question)}</span></div>
+    <div class="text-m text-slate-900 dark:text-white text-left overflow-y-auto px-2 border border-blue-300"><span class="font-bold">Summary:&nbsp;</span>{explanation.summary.content}</div>
+    <div class="!mt-auto w-full">
+        <button on:click={next} class="bg-blue-500 hover:bg-blue-600 dark:text-white font-bold py-2 px-4 text-2xl w-full">next</button>
     </div>
 </div>
