@@ -36,6 +36,10 @@ async def begin_db_session(request: fastapi.Request, call_next):
         except Exception as e:
             await session.rollback()
             raise e
+        
+@app.get("/api/v1/health")
+async def health():
+    return {"status": "ok"}
 
 @app.get("/api/v1/questions/random")
 async def read_random(request: fastapi.Request):
