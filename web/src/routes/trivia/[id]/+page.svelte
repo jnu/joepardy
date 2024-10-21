@@ -21,7 +21,7 @@
 	}
 </script>
 
-<div class="flex flex-col h-screen justify-between dark:bg-slate-300">
+<div class="flex flex-col h-dvh justify-between dark:bg-slate-300">
 	<div class="text-m bg-blue-400 dark:bg-blue-300 dark:text-white w-full py-2 text-center">
 		{clean(trivium.category)} - ${trivium.score}
 	</div>
