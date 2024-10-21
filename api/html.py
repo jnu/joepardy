@@ -48,12 +48,13 @@ class Index:
         t = quote_plus(trivia.answer)
         if wrap:
             t = "\\n".join([quote_plus(line) for line in textwrap.wrap(trivia.answer, 40)])
+        html_escaped = trivia.answer.replace('"', "\\\"")
         url = f"{base_url}{t}"
         return """\
-<meta property="og:title" content="Trivia Question #{}">
-<meta property="og:description" content="Click to view the question and answer.">
+<meta property="og:title" content="Answer #{}">
+<meta property="og:description" content="{}">
 <meta property="og:image" content="{}">
-""".format(trivia.id, url)
+""".format(trivia.id, html_escaped, url)
 
     async def _parse_url(self, request: Request) -> tuple[str, int]:
         # The URLs are generally in the format `/explain/:id` or `/trivia/:id`.
