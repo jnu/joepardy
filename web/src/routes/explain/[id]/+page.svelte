@@ -1,9 +1,10 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
-	import { clean } from '$lib/clean';
+	import { clean, parse } from '$lib/format.js';
 	export let data;
 
 	$: explanation = data.explanation;
+    $: answer = parse(explanation.trivium.answer);
 
 	async function back() {
 		await goto(`/trivia/${explanation.trivium.id}`);
@@ -19,7 +20,10 @@
 		{clean(explanation.trivium.category)} - ${explanation.trivium.score}
 	</div>
 	<div class="text-sm text-slate-900 self-center px-2">
-		{clean(explanation.trivium.answer)}:
+        {#if answer.meta}
+            <span class="text-slate-400 italic">{answer.meta}</span>&nbsp;
+        {/if}
+		<span>{answer.text}</span>:&nbsp;
 		<span class="font-bold">{clean(explanation.trivium.question)}</span>
 	</div>
 	<div

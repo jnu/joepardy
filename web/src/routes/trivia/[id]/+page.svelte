@@ -1,10 +1,11 @@
 <script lang="ts">
-	import { invalidateAll, goto } from '$app/navigation';
-	import { clean } from '$lib/clean';
+	import { goto } from '$app/navigation';
+	import { clean, parse } from '$lib/format.js';
 	export let data;
 
 	let revealed = false;
 	$: trivium = data.trivium;
+  $: answer = parse(trivium.answer);
 
 	function reveal() {
 		revealed = true;
@@ -27,7 +28,12 @@
 	<div
 		class="text-3xl text-slate-900 dark:text-slate-100 text-center grow-1 overflow-y-auto py-4 px-4"
 	>
-		{clean(trivium.answer)}
+    {#if answer.meta}
+      <p class="text-lg text-slate-400 italic">{answer.meta}</p>
+    {/if}
+    <p>
+		{answer.text}
+    </p>
 	</div>
 	{#if revealed}
 		<div class="text-3xl text-green-700 self-center !mt-auto">{clean(trivium.question)}</div>

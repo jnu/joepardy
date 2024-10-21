@@ -1,12 +1,13 @@
 import fastapi
 from fastapi.staticfiles import StaticFiles
-from fastapi.responses import FileResponse
+from fastapi.responses import HTMLResponse
 from fastapi.exception_handlers import http_exception_handler
 from starlette.exceptions import HTTPException as StarletteHTTPException
 import logging
 from contextlib import asynccontextmanager
 
 from .config import config
+from .html import render_index
 import api.query as q
 
 logger = logging.getLogger(__name__)
@@ -65,5 +66,6 @@ app.mount("/", StaticFiles(directory=config.assets.directory, html=True), name="
 async def spa_http_exception_handler(request, exc):
     # Override 404 handling to return index.html
     if exc.status_code == 404:
-        return FileResponse(config.assets.index_file)
+        s = await render_index(request, config.assets.index_file)
+        return HTMLResponse(content=s)
     return await http_exception_handler(request, exc)
