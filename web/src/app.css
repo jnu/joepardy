@@ -1,3 +1,27 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+.markdown {
+    p {
+        padding-left: 1rem;
+        padding-right: 1rem;
+        margin-bottom: 0.5rem;
+    }
+    ul, ol {
+        margin-left: 1rem;
+        margin-right: 1rem;
+        padding-left: 2rem;
+
+        li {
+            margin-top: 0.5em;
+        }
+    }
+    ul {
+        list-style-type: disc;
+    }
+    ol {
+        list-style-type: decimal;
+    }
+}

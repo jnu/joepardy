@@ -6,7 +6,11 @@ from functools import cached_property
 _system = """\
 You are good at explaining trivia questions clearly and concisely.
 
-I will give you a trivia question and answer, and you will give me more information about it.\
+I will give you a trivia question and answer that has appeared on Jeopardy, and you will give me more information about it.
+
+You may include interesting and relevant facts about the subject in this response.
+
+Remember to be very focused, clear, and concise.\
 """
 
 
